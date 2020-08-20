@@ -16,6 +16,7 @@ import {
 import Rating from "@material-ui/lab/Rating"
 import { ArrowBack } from "@material-ui/icons"
 import { getFilm } from "src/api/films"
+import { useHistory } from "react-router"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +41,7 @@ const Film = ({
   imdbRating,
 }) => {
   const classes = useStyles()
-  const handleBackClick = () => {}
+  let history = useHistory()
 
   return (
     <Container component="section" spacing={2} className={classes.root}>
@@ -80,11 +81,7 @@ const Film = ({
               <em>Actor:</em> {Actors}
             </Typography>
           </Box>
-          <IconButton
-            onClick={handleBackClick}
-            // aria-expanded={expanded}
-            aria-label="show more"
-          >
+          <IconButton onClick={() => history.goBack()} aria-label="show more">
             <ArrowBack />
           </IconButton>
         </CardActions>
