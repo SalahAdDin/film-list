@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { Route, Switch } from "react-router"
 import { BrowserRouter } from "react-router-dom"
-import { Container, Grid, Typography, makeStyles } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core"
 
-import logo from "./logo.svg"
 import "./App.css"
 import { getSearchedFilms } from "./api/films"
 import Films from "./components/views/films"
 import Movie from "./components/views/film"
+import Header from "./components/elements/header"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,8 +36,13 @@ const App = () => {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    fetchData()
+  }, [term])
+
   return (
     <BrowserRouter>
+      <Header onSubmit={(term) => setTerm(term)} />
       <Switch>
         <Route exact path="/" render={() => <Films films={films} />} />
         <Route
@@ -51,7 +56,7 @@ const App = () => {
 }
 
 App.propTypes = {
-  match: PropTypes.object.isRequired,
+  match: PropTypes.object,
 }
 
 export default App
