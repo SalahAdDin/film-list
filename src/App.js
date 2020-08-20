@@ -23,13 +23,18 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const classes = useStyles()
-  const [term, setTerm] = useState("Pokemon")
+  const [films, setFilms] = useState({})
   const [page, setPage] = useState(1)
-  const [films, setFilms] = useState([])
+  const [term, setTerm] = useState("Pokemon")
+  const [totalResults, setTotalResults] = useState(0)
 
   const fetchData = async () => {
     const result = await getSearchedFilms(term, page)
-    setFilms(result.data.Search)
+    const fetchedData = result.data.Search.sort(
+      (a, b) => Number(b.Year) - Number(a.Year)
+    )
+    setFilms({ 1: fetchedData.slice(0, 5), 2: fetchedData.slice(5, 10) })
+    setTotalResults(result.data.totalResults)
   }
 
   useEffect(() => {
@@ -40,11 +45,26 @@ const App = () => {
     fetchData()
   }, [term])
 
+  useEffect(() => {
+    fetchData()
+  }, [page])
+
   return (
     <BrowserRouter>
       <Header onSubmit={(term) => setTerm(term)} />
       <Switch>
-        <Route exact path="/" render={() => <Films films={films} />} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Films
+              films={films}
+              currentPage={page}
+              pageCount={Number((totalResults / 5).toFixed())}
+              changePage={(page) => setPage(page)}
+            />
+          )}
+        />
         <Route
           exact
           path="/film/:id"
