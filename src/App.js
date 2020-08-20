@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { Route, Switch } from "react-router"
 import { BrowserRouter } from "react-router-dom"
-import { makeStyles } from "@material-ui/core"
 
 import "./App.css"
 import { getSearchedFilms } from "./api/films"
@@ -10,19 +9,7 @@ import Films from "./components/views/films"
 import Movie from "./components/views/film"
 import Header from "./components/elements/header"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(2),
-  },
-  landing: {
-    width: "auto",
-    margin: theme.spacing(4),
-  },
-}))
-
 const App = () => {
-  const classes = useStyles()
   const [films, setFilms] = useState({})
   const [page, setPage] = useState(1)
   const [term, setTerm] = useState("Pokemon")
