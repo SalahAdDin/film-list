@@ -1,0 +1,40 @@
+.film {
+  .MuiCardMedia-root {
+    width: auto;
+    margin: auto;
+  }
+  display: grid;
+  .right {
+    margin: 20px;
+    .MuiBox-root {
+      margin-right: auto;
+    }
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .film {
+    grid-template-columns: 1fr 2fr;
+    .MuiCardMedia-root {
+      width: 100%;
+    }
+    .right {
+      display: grid;
+    }
+  }
+}
+
+@media only screen and (max-width: 920px) and (min-width: 720px) {
+  .film {
+    .MuiCardMedia-root {
+      margin: 35% auto;
+    }
+  }
+}
+@media only screen and (min-width: 1160px) {
+  .film {
+    .right {
+      grid-template-rows: 1fr 2fr 1fr;
+    }
+  }
+}
