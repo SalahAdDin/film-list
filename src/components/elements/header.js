@@ -79,32 +79,30 @@ const Header = ({ onSubmit }) => {
   })
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="sticky">
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            IMDb hele!
-          </Typography>
-          <form onSubmit={formik.handleSubmit} className={classes.search}>
-            <div className={classes.searchIcon}>
-              <Search />
-            </div>
-            <InputBase
-              placeholder="Search..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-              name="term"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.amount}
-            />
-          </form>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar className={classes.grow} position="sticky">
+      <Toolbar>
+        <Typography variant="h6" noWrap>
+          IMDb hele!
+        </Typography>
+        <form onSubmit={formik.handleSubmit} className={classes.search}>
+          <div className={classes.searchIcon}>
+            <Search />
+          </div>
+          <InputBase
+            placeholder="Search..."
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ "aria-label": "search" }}
+            name="term"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.amount}
+          />
+        </form>
+      </Toolbar>
+    </AppBar>
   )
 }
 

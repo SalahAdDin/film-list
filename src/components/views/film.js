@@ -57,27 +57,28 @@ const Film = ({
           }
           subheader={
             <>
-              {Runtime} | {Genre} | {moment(Released).format("DD MMMM YYYY")} (
-              {Country}) | {Rated} |{" "}
+              {Runtime} | {Genre} |{" "}
+              {moment(Released, "DD MMMM YYYY").format("DD MMMM YYYY")} ({Country}) |{" "}
+              {Rated} |{" "}
               <Rating value={Number(imdbRating)} precision={0.1} max={10} readOnly />
             </>
           }
         />
         <CardMedia image={Poster} title={"Poster: " + Title} />
         <CardContent>
-          <Typography component="p" variant="body" paragraph>
+          <Typography component="p" variant="body1" paragraph>
             {Plot}
           </Typography>
         </CardContent>
         <CardActions>
           <Box>
-            <Typography component="p" variant="body">
+            <Typography component="p" variant="body2">
               <em>Director:</em> {Director}
             </Typography>
-            <Typography component="p" variant="body">
+            <Typography component="p" variant="body2">
               <em>Writer:</em> {Writer}
             </Typography>
-            <Typography component="p" variant="body">
+            <Typography component="p" variant="body2">
               <em>Actor:</em> {Actors}
             </Typography>
           </Box>
