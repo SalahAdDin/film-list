@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Searching
+
+For searching any different term just go to the search input in the top right corner,write whatever you want to search and press the <kbd>↵</kbd> (enter) key.
+
+![](/home/joselito92/Proyectos/Contribution/film-list/filllist.gif)
+
+For navigation use the paginator which is at bottom(below to the film list). Click the film to go to its page; once there, if you want to come back just do click in the bottom right corner button.
+
+Do click on the <kbd>x<kbd> button inside of the searching box in order to clear the search.
+
 ## Available Scripts
 
 In the project directory, you can run:
