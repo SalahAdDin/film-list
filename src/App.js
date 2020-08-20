@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const classes = useStyles()
-  const [data, setData] = useState([])
-  const [films, setFilms] = useState([])
+  const [films, setFilms] = useState({})
   const [page, setPage] = useState(1)
   const [term, setTerm] = useState("Pokemon")
   const [totalResults, setTotalResults] = useState(0)
@@ -34,8 +33,7 @@ const App = () => {
     const fetchedData = result.data.Search.sort(
       (a, b) => Number(b.Year) - Number(a.Year)
     )
-    setData(fetchedData)
-    setFilms(fetchedData.slice(0, 5))
+    setFilms({ 1: fetchedData.slice(0, 5), 2: fetchedData.slice(5, 10) })
     setTotalResults(result.data.totalResults)
   }
 
@@ -64,9 +62,6 @@ const App = () => {
               currentPage={page}
               pageCount={Number((totalResults / 5).toFixed())}
               changePage={(page) => setPage(page)}
-              changeFilmSet={(secondHalf) =>
-                secondHalf ? setFilms(data.slice(5, 10)) : setFilms(data.slice(0, 5))
-              }
             />
           )}
         />
