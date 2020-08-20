@@ -5,5 +5,5 @@ export const getFilm = (id) => {
 }
 
 export const getSearchedFilms = (text, page) => {
-  return api.get(`?apikey=${apiKey}&type=movie&s=${text}&page=${page}`)
+  return api.get(`?apikey=${apiKey}&type=movie&plot=full&s=${text}&page=${page}`)
 }
