@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core"
 import { Search } from "@material-ui/icons"
 import { useFormik } from "formik"
+import { Link, useHistory } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -70,10 +71,12 @@ const validate = (values) => {
 
 const Header = ({ onSubmit }) => {
   const classes = useStyles()
+  let history = useHistory()
   const formik = useFormik({
     initialValues: { term: "" },
     validate,
     onSubmit: ({ term }) => {
+      history.push("/")
       onSubmit(term)
     },
   })
@@ -81,9 +84,11 @@ const Header = ({ onSubmit }) => {
   return (
     <AppBar className={classes.grow} position="sticky">
       <Toolbar>
-        <Typography variant="h6" noWrap>
-          IMDb hele!
-        </Typography>
+        <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+          <Typography variant="h6" noWrap>
+            IMDb hele!
+          </Typography>
+        </Link>
         <form onSubmit={formik.handleSubmit} className={classes.search}>
           <div className={classes.searchIcon}>
             <Search />
