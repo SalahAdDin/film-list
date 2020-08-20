@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Link, useHistory } from "react-router-dom"
 import {
   AppBar,
   InputBase,
@@ -8,14 +9,12 @@ import {
   fade,
   makeStyles,
 } from "@material-ui/core"
-import { Search } from "@material-ui/icons"
+import { Clear, Search } from "@material-ui/icons"
 import { useFormik } from "formik"
-import { Link, useHistory } from "react-router-dom"
+
+import "./header.scss"
 
 const useStyles = makeStyles((theme) => ({
-  grow: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -39,15 +38,6 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(3),
       width: "auto",
     },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
   },
   inputRoot: {
     color: "inherit",
@@ -82,15 +72,20 @@ const Header = ({ onSubmit }) => {
   })
 
   return (
-    <AppBar className={classes.grow} position="sticky">
-      <Toolbar>
-        <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
-          <Typography variant="h6" noWrap>
+    <AppBar position="sticky">
+      <Toolbar className="header">
+        <Link to="/">
+          <Typography variant="h6" noWrap className="title">
             IMDb hele!
           </Typography>
         </Link>
-        <form onSubmit={formik.handleSubmit} className={classes.search}>
-          <div className={classes.searchIcon}>
+        <form onSubmit={formik.handleSubmit} className={classes.search + " search"}>
+          <div
+            className="icon"
+            style={{
+              pointerEvents: "none",
+            }}
+          >
             <Search />
           </div>
           <InputBase
@@ -103,8 +98,11 @@ const Header = ({ onSubmit }) => {
             name="term"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            value={formik.values.amount}
+            value={formik.values.term}
           />
+          <div className="icon">
+            <Clear onClick={formik.resetForm} />
+          </div>
         </form>
       </Toolbar>
     </AppBar>

@@ -1,0 +1,27 @@
+.header {
+  max-width: 1280px;
+  display: grid !important;
+  grid-template-columns: 3fr 1fr;
+  margin: auto;
+  width: 100%;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  .title {
+    grid-column: 1/1;
+  }
+  .search {
+    grid-column: 2/2;
+    display: flex;
+  }
+  .icon {
+    height: 100%;
+    display: flex;
+    // pointer-events: none;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    margin: auto 16px;
+  }
+}
