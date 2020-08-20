@@ -1,0 +1,14 @@
+.film-card {
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin: 20px auto;
+  width: 100%;
+  &:hover {
+    background: linear-gradient(226.29deg, #115293 0%, rgba(0, 0, 0, 0.04) 100%);
+    // backdrop-filter: blur(6px);
+  }
+  .poster {
+    width: 100%;
+  }
+}
